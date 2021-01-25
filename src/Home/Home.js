@@ -28,7 +28,8 @@ class Home extends React.Component {
 					<form>
 					<label>
 							Search for a recipe:{' '}
-							<input type='text' name='fullname' />
+							<input type='text' name='search' />
+							<input type='submit' value='Search' />
 						</label>
 						<br />
 					</form>
