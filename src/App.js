@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import RecipesContext from './RecipesContext';
 import Home from './Home/Home';
-// import AllRecipes from './RecipesList/RecipesList';
-// import AddRecipe from './AddRecipe/AddRecipe';
-// import DeleteRecipe from './DeleteRecipe/DeleteRecipe';
-// import Login from './Login/Login';
-// import Register from './Register/Register';
-// import MyRecipes from './MyRecipes/MyRecipes';
-// import EditRecipe from './EditRecipe/EditRecipe';
+import Recipe from './Recipe/Recipe';
+import UserProfile from './UserProfile/UserProfile';
+import AddRecipe from './AddRecipe/AddRecipe';
+import Login from './Login/Login';
+import Register from './Register/Register';
+import MyRecipes from './MyRecipes/MyRecipes';
+import EditRecipe from './EditRecipe/EditRecipe';
 
-class App extends Component {
+class App extends React.Component {
 	render() {
 		const contextValue = {};
 
@@ -20,17 +20,14 @@ class App extends Component {
 				<RecipesContext.Provider value={contextValue}>
 					<div className='content' aria-live='polite'>
 						<Route exact path='/' component={Home} />
-						{/* <Route exact path='/login' component={Login} />
-						<Route exact path='/register' component={Register} />
-						<Route exact path='/my-recipes' component={MyRecipes} />
-						<Route exact path='/all-recipes' component={AllRecipes} />
+						<Route exact path='/login' component={Login} />
 						<Route path='/add-recipe' component={AddRecipe} />
+						<Route exact path='/register' component={Register} />
+						<Route exact path='/users/:userId' component={UserProfile} />
+						<Route exact path='/recipes/:recipeId' component={Recipe} />
 						<Route path='/edit-recipe/:recipeId' component={EditRecipe} />
-						<Route
-							exact
-							path='/delete-recipe/:recipeId'
-							component={DeleteRecipe}
-						/> */}
+						<Route exact path='/my-recipes' component={MyRecipes} />
+						
 					</div>
 				</RecipesContext.Provider>
 			</main>

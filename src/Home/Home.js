@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Nav from '../Nav/Nav';
 
-
-class Home extends Component {
+class Home extends React.Component {
 	render() {
 		return (
 			<div>
-				<nav role='navigation'>Nav</nav>
+				<Nav />
 				<main role='main'>
+					<h3>Welcome to Recipe Keeper!</h3>
+					<h4>All your recipes in one place.</h4>
 
-					<Link to={'/'}>Go to Home Page</Link>
+					<p>
+						Browse recipes, save your favorites, and create your own recipes.{' '}
+					</p>
 
-                    {/* <Link to={'/'}>View All Recipes</Link> */}
+					<p>
+						First time here?{' '}
+						<Link to={'/register'}> Sign up for an account</Link> today and
+						start saving your favorite recipes!
+					</p>
 
-					<Link to={'/register'}> Sign Up For An Account</Link>
-
-					<Link to={'/login'}>Login</Link>
-
-					<Link to={'/my-recipes'}>View My Recipes</Link>
-
-					<Link to={'/add-recipe'}>Add Recipe</Link>
+					{/* Display links to sortable Recipes table. Will default to show 25 newest public recipes*/}
+					<h3>Recipes</h3>
+					<p>Have a look at some of the newest recipes submitted by our community!</p>
+					<ol>
+						<li><Link to='/recipes/:recipeId'>Recipe 1</Link></li>
+						<li><Link to='/recipes/:recipeId'>Recipe 2</Link></li>
+						<li><Link to='/recipes/:recipeId'>Recipe 3</Link></li>
+					</ol>
 				</main>
 			</div>
 		);
