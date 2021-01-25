@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 
@@ -12,11 +12,6 @@ class Register extends React.Component {
 						<label>
 							Full Name:
 							<input type='text' name='fullname' />
-						</label>
-						<br />
-						<label>
-							Nickname:
-							<input type='text' name='nickname' />
 						</label>
 						<br />
 						<label>

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React  from 'react';
 import Nav from '../Nav/Nav';
 
 class Recipe extends React.Component {
@@ -11,8 +10,6 @@ class Recipe extends React.Component {
 					<h2>Recipe Name</h2>
 
 					<h4>Recipe Description:</h4>
-
-                    <h4>Recipe Type</h4>
 
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
@@ -44,7 +41,20 @@ class Recipe extends React.Component {
 						vehicula ut. Morbi nec ligula est.
 					</p>
 
-					<h4></h4>
+					<h4>Author:</h4>
+					<p>Username Goes Here</p>
+
+					<h4>Recipe Type:</h4>
+					<p>meal type goes here</p>
+
+					<h4>Date Created</h4>
+					Date created goes here.
+
+					<form>
+                        <input type='submit' value='Edit Recipe' />
+						<input type='submit' value='Add to My Recipes' />
+                        <input type='submit' value='Delete Recipe' />
+                    </form>
 				</main>
 			</div>
 		);
