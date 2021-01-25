@@ -12,7 +12,7 @@ class Home extends React.Component {
 					<h4>All your recipes in one place.</h4>
 
 					<p>
-						Browse recipes, save your favorites, and create your own recipes.{' '}
+						Browse recipes, save your favorites, and create your own recipes.
 					</p>
 
 					<p>
@@ -24,6 +24,14 @@ class Home extends React.Component {
 					{/* Display links to sortable Recipes table. Will default to show 25 newest public recipes*/}
 					<h3>Recipes</h3>
 					<p>Have a look at some of the newest recipes submitted by our community!</p>
+
+					<form>
+					<label>
+							Search for a recipe:{' '}
+							<input type='text' name='fullname' />
+						</label>
+						<br />
+					</form>
 					<ol>
                     <li>
                         <Link to='/recipes/:recipeId'>Link to Recipe</Link>
