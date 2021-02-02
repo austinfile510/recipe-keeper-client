@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import RecipesContext from './RecipesContext';
+import ApiContext from './ApiContext';
 import Home from './Home/Home';
 import Recipe from './Recipe/Recipe';
 import UserProfile from './UserProfile/UserProfile';
@@ -17,7 +17,7 @@ class App extends React.Component {
 		return (
 			<main className='App'>
 				<h1>Recipe Keeper</h1>
-				<RecipesContext.Provider value={contextValue}>
+				<ApiContext.Provider value={contextValue}>
 					<div className='content' aria-live='polite'>
 						<Route exact path='/' component={Home} />
 						<Route exact path='/login' component={Login} />
@@ -29,7 +29,7 @@ class App extends React.Component {
 						<Route exact path='/my-recipes' component={MyRecipes} />
 						
 					</div>
-				</RecipesContext.Provider>
+				</ApiContext.Provider>
 			</main>
 		);
 	}

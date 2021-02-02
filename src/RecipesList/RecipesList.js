@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TokenService from '../services/token-service';
 import config from '../config';
 
 class RecipesList extends React.Component {
@@ -11,8 +12,8 @@ class RecipesList extends React.Component {
             method: 'GET',
             headers: {
         'content-type': 'application/json',
-        'authorization': `bearer ${config.API_KEY}`
-      },
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+    },
         })
         .then((res) => {
             return res.json();

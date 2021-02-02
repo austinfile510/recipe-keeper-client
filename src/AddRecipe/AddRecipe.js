@@ -1,5 +1,8 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
+import ApiContext from '../ApiContext';
+import config from '../config';
+import RecipeApiService from '../services/recipe-api-service';
 
 export default class AddRecipe extends React.Component {
 	constructor(props) {
@@ -12,13 +15,21 @@ export default class AddRecipe extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
+	static defaultProps = {
+		history: {
+			push: () => {},
+		},
+	};
+
+	static contextType = ApiContext;
+
 	handleChange = (e) => {
 		const target = e.target;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
 
 		this.setState({ [name]: value });
-	}
+	};
 
 	handleSubmit = (e) => {
 		e.preventDefault();
@@ -31,7 +42,14 @@ export default class AddRecipe extends React.Component {
 			date_modified: new Date(),
 			is_private: e.target['is_private'].value,
 		};
-		console.log(newRecipe);
+		RecipeApiService.postRecipe(newRecipe)
+			.then(recipe => {
+				this.context.postRecipe(recipe)
+				this.props.history.push(`/my-recipes`);
+			})
+			.catch((error) => {
+				console.error({ error });
+			});
 	};
 
 	render() {
@@ -76,7 +94,11 @@ export default class AddRecipe extends React.Component {
 						<br />
 						<label>
 							Meal Type:{' '}
-							<select name='meal_type' defaultValue={this.state.meal_type} onSubmit={this.handleChange}>
+							<select
+								name='meal_type'
+								defaultValue={this.state.meal_type}
+								onSubmit={this.handleChange}
+							>
 								<option value='breakfast'>Breakfast</option>
 								<option value='lunch'>Lunch</option>
 								<option value='dinner'>Dinner</option>

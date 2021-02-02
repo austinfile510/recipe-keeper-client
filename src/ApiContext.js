@@ -1,10 +1,10 @@
 import React from 'react'
 
-const RecipesContext = React.createContext({
+const ApiContext = React.createContext({
   recipes: [],
-  addRecipe: () => {},
+  postRecipe: () => {},
   deleteRecipe: () => {},
   updateRecipe: () => {},
 })
 
-export default RecipesContext
+export default ApiContext
