@@ -1,22 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../Nav/Nav';
+import AuthApiService from '../services/auth-api-service';
 
 class Register extends React.Component {
+	handleRegister = e => {
+		e.preventDefault();
+			const registerInfo = {
+				full_name: e.target['full_name'].value,
+				user_name: e.target['user_name'].value,
+				password: e.target['password'].value,
+				email: e.target['email'].value,
+			}
+		AuthApiService.postUser(registerInfo)
+		.then(() => {
+			this.props.history.push('/login')
+		})
+	}
 	render() {
 		return (
 			<div>
 				<Nav />
 				<main role='main'>
-					<form>
+					<form onSubmit={this.handleRegister}>
 						<label>
 							Full Name:
-							<input type='text' name='fullname' />
+							<input type='text' name='full_name' />
 						</label>
 						<br />
 						<label>
 							Username:
-							<input type='text' name='username' />
+							<input type='text' name='user_name' />
 						</label>
 						<br />
 						<label>
@@ -24,11 +38,6 @@ class Register extends React.Component {
 							<input type='text' name='password' />
 						</label>
                         <br />
-                        <label>
-							Confirm Password:
-							<input type='text' name='password' />
-						</label>
-						<br />
                         <label>
 							Email Address:
 							<input type='text' name='email' />
