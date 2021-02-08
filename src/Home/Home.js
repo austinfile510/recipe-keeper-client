@@ -5,6 +5,7 @@ import RecipeApiService from '../services/recipe-api-service';
 import RecipeListContext from '../contexts/RecipeListContext';
 import RecipesListItem from '../RecipesListItem/RecipesListItem';
 import { Section } from '../Utils/Utils';
+import SearchBar from '../SearchBar/SearchBar'
 
 class Home extends React.Component {
 	static contextType = RecipeListContext;
@@ -17,8 +18,8 @@ class Home extends React.Component {
 	}
 
 	renderRecipes() {
-		const { recipeList = [] } = this.context;
-		return recipeList.map((recipe) => (
+		const { recipeList = [], searchTerm } = this.context;
+		return recipeList.filter(recipe => recipe.title == searchTerm || !searchTerm).map((recipe) => (
 			<RecipesListItem key={recipe.id} recipe={recipe} />
 		));
 	}
@@ -48,16 +49,12 @@ class Home extends React.Component {
 						Have a look at some of the newest recipes submitted by our
 						community!
 					</p>
-
-					<form>
-						<label>
-							Search for a recipe: <input type='text' name='search' />
-							<input type='submit' value='Search' />
-						</label>
-						<br />
-					</form>
+					<SearchBar />
 					<ol>
 						<Section list className='MyRecipePage'>
+							{this.context.recipeList.length == 0 ? (
+								<p className='red'>Recipe not found, please try again.</p>
+							): null }
 							{error ? (
 								<p className='red'>There was an error, try again</p>
 							) : (

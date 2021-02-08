@@ -1,7 +1,6 @@
 import React from 'react';
 import RecipeApiService from '../services/recipe-api-service';
 import Nav from '../Nav/Nav';
-import TokenService from '../services/token-service';
 
 class Recipe extends React.Component {
 	state = {
@@ -13,12 +12,14 @@ class Recipe extends React.Component {
 	};
 
 	handleClickDelete = (e) => {
-		e.preventDefault();
-		const recipeId = this.props.id;
-
-		RecipeApiService.deleteRecipe(recipeId);
-
+		console.log('button clicked!');
+		const { recipeId } = this.props.match.params;
+		RecipeApiService.deleteRecipe(recipeId).then(() => {
+			this.props.history.push('/my-recipes');
+		});
 	};
+
+	handleSearch;
 
 	componentDidMount() {
 		const { recipeId } = this.props.match.params;
@@ -28,7 +29,7 @@ class Recipe extends React.Component {
 	}
 
 	render() {
-		const { recipe } = this.state;
+		const { recipe, user } = this.state;
 		return (
 			<div>
 				<Nav />
@@ -48,7 +49,7 @@ class Recipe extends React.Component {
 					<p>{recipe.instructions}</p>
 
 					<h4>Author:</h4>
-					<p></p>
+					<p>{recipe.author}</p>
 
 					<h4>Recipe Type:</h4>
 					<p>{recipe.meal_type}</p>
@@ -57,9 +58,9 @@ class Recipe extends React.Component {
 
 					<p>{recipe.date_modified}</p>
 
-					<form>
-						<input type='submit' value='Delete Recipe' />
-					</form>
+					<button onClick={() => this.handleClickDelete(user.id)}>
+						Delete Recipe
+					</button>
 				</main>
 			</div>
 		);

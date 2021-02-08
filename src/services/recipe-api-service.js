@@ -31,12 +31,9 @@ const RecipeApiService = {
 		return fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`, {
 			method: 'DELETE',
 			headers: {
-				
 				'authorization': `bearer ${TokenService.getAuthToken()}`,
 			},
-		}).then((res) =>
-			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-		);
+		})
 	},
 	postRecipe(newRecipe) {
 		return fetch(`${config.API_ENDPOINT}/recipes`, {
@@ -52,6 +49,7 @@ const RecipeApiService = {
 	},
 	getUser(userId) {
 		return fetch(`${config.API_ENDPOINT}/users/${userId}`, {
+			method: 'GET',
 			headers: {
 				'Authorization': `Bearer ${TokenService.getAuthToken()}`,
 			}

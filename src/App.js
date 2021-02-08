@@ -1,11 +1,13 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import Home from './Home/Home';
 import Recipe from './Recipe/Recipe';
 import AddRecipe from './AddRecipe/AddRecipe';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import MyRecipes from './MyRecipes/MyRecipes';
+import NotFoundPage from './NotFoundPage/NotFoundPage'
+import { RecipeListProvider } from './contexts/RecipeListContext';
 
 class App extends React.Component {
 	state = { hasError: false };
@@ -14,26 +16,49 @@ class App extends React.Component {
 		console.error(error);
 		return { hasError: true };
 	}
-	render() {
 
+	handleDeleteRecipe = (noteId) => {
+		this.setState({
+			notes: this.state.notes.filter((note) => note.id !== noteId),
+		});
+	};
+
+	render() {
+		const contextValue = {
+			recipeList: this.state.recipeList,
+			error: this.state.error,
+			setError: this.setError,
+			clearError: this.clearError,
+			setUser: this.setUser,
+			setRecipe: this.setRecipe,
+			setRecipeList: this.setRecipeList,
+			deleteRecipe: this.handleDeleteRecipe,
+		  }
 		return (
 			<div className='App'>
+			<RecipeListProvider value={contextValue}>
 				<header className='App__header'>
-				<Link to={'/'}><h1>Recipe Keeper</h1></Link>
+					<Link to={'/'}>
+						<h1>Recipe Keeper</h1>
+					</Link>
 				</header>
 				<main className='App__main'>
 					{this.state.hasError && (
 						<p className='red'>There was an error! Oh no!</p>
 					)}
-						<div className='content' aria-live='polite'>
-							<Route exact path='/' component={Home} />
-							<Route exact path='/login' component={Login} />
-							<Route path='/add-recipe' component={AddRecipe} />
-							<Route exact path='/register' component={Register} />
-							<Route exact path='/recipes/:recipeId' component={Recipe} />
-							<Route exact path='/my-recipes' component={MyRecipes} />
-						</div>
+					<div className='content' aria-live='polite'>
+					<Switch>
+						<Route exact path='/' component={Home} />
+						<Route exact path='/login' component={Login} />
+						<Route path='/add-recipe' component={AddRecipe} />
+						<Route exact path='/register' component={Register} />
+						<Route exact path='/recipes/:recipeId' component={Recipe} />
+						<Route exact path='/my-recipes' component={MyRecipes} />
+						<Route component = {NotFoundPage} />;
+						</Switch>
+					</div>
 				</main>
+				</RecipeListProvider>
 			</div>
 		);
 	}

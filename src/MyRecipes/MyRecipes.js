@@ -5,6 +5,7 @@ import Nav from '../Nav/Nav';
 import RecipeApiService from '../services/recipe-api-service';
 import { Section } from '../Utils/Utils';
 
+
 class MyRecipes extends React.Component {
 	static contextType = RecipeListContext;
 
@@ -13,6 +14,7 @@ class MyRecipes extends React.Component {
 		RecipeApiService.getMyRecipes()
 			.then(this.context.setRecipeList)
 			.catch(this.context.setError);
+		
 	}
 
 	renderRecipes() {
@@ -28,13 +30,6 @@ class MyRecipes extends React.Component {
 			<div>
 				<Nav />
 				<main role='main'>
-					<form>
-						<label>
-							Search for a recipe: <input type='text' name='search' />
-							<input type='submit' value='Search' />
-						</label>
-						<br />
-					</form>
 					<Section list className='MyRecipePage'>
 					{error ? (
 						<p className='red'>There was an error, try again</p>
