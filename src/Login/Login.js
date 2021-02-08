@@ -4,6 +4,7 @@ import Nav from '../Nav/Nav';
 import AuthApiService from '../services/auth-api-service';
 
 class Login extends React.Component {
+
 	handleLogin = e => {
 		e.preventDefault();
 			const loginCredentials = {
@@ -19,7 +20,7 @@ class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<Nav />
+			<Nav />
 				<main role='main'>
 					<form onSubmit={this.handleLogin}>
 						<label>

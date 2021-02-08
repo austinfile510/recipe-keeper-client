@@ -1,15 +1,14 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
-import ApiContext from '../ApiContext';
-import config from '../config';
 import RecipeApiService from '../services/recipe-api-service';
 
 export default class AddRecipe extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			meal_type: 'breakfast',
+			meal_type: 'Breakfast',
 			is_private: false,
+			error: null
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -20,8 +19,6 @@ export default class AddRecipe extends React.Component {
 			push: () => {},
 		},
 	};
-
-	static contextType = ApiContext;
 
 	handleChange = (e) => {
 		const target = e.target;
@@ -44,8 +41,7 @@ export default class AddRecipe extends React.Component {
 		};
 		RecipeApiService.postRecipe(newRecipe)
 			.then(recipe => {
-				this.context.postRecipe(recipe)
-				this.props.history.push(`/my-recipes`);
+				this.props.history.push(`/recipes/${recipe.id}`);
 			})
 			.catch((error) => {
 				console.error({ error });
@@ -54,8 +50,8 @@ export default class AddRecipe extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<Nav />
+			<div name= 'AddRecipe'>
+			<Nav />
 				<main role='main'>
 					<p>
 						Fill out the forms below with all the details for your new recipe.
@@ -99,16 +95,16 @@ export default class AddRecipe extends React.Component {
 								defaultValue={this.state.meal_type}
 								onSubmit={this.handleChange}
 							>
-								<option value='breakfast'>Breakfast</option>
-								<option value='lunch'>Lunch</option>
-								<option value='dinner'>Dinner</option>
-								<option value='dessert'>Dessert</option>
-								<option value='soup'>Soups, Stews, and Chili</option>
-								<option value='salad'>Salad</option>
-								<option value='snack'>Snack</option>
-								<option value='drink'>Drink</option>
-								<option value='appetizers'>Appetizers</option>
-								<option value='seasonal'>Holiday/Seasonal</option>
+								<option value='Breakfast'>Breakfast</option>
+								<option value='Lunch'>Lunch</option>
+								<option value='Dinner'>Dinner</option>
+								<option value='Dessert'>Dessert</option>
+								<option value='Soups, Stews, and Chili'>Soups, Stews, and Chili</option>
+								<option value='Salad'>Salad</option>
+								<option value='Snack'>Snack</option>
+								<option value='Drink'>Drink</option>
+								<option value='Appetizers'>Appetizers</option>
+								<option value='Holiday/Seasonal'>Holiday/Seasonal</option>
 							</select>
 						</label>
 						<br />

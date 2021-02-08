@@ -18,9 +18,20 @@ const RecipeApiService = {
 			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
 		);
 	},
+	getMyRecipes() {
+		return fetch(`${config.API_ENDPOINT}/my-recipes`, {
+			headers: {
+				'authorization': `bearer ${TokenService.getAuthToken()}`,
+			},
+		}).then((res) =>
+		!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+	);
+	},
 	deleteRecipe(recipeId) {
 		return fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`, {
+			method: 'DELETE',
 			headers: {
+				
 				'authorization': `bearer ${TokenService.getAuthToken()}`,
 			},
 		}).then((res) =>
@@ -32,14 +43,22 @@ const RecipeApiService = {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
-				'authorization': `bearer ${TokenService.getAuthToken()}`,
+				'Authorization': `Bearer ${TokenService.getAuthToken()}`,
 			},
-			body: JSON.stringify({
-				newRecipe,
-			}),
+			body: JSON.stringify(newRecipe),
 		}).then((res) =>
 			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
 		);
+	},
+	getUser(userId) {
+		return fetch(`${config.API_ENDPOINT}/users/${userId}`, {
+			headers: {
+				'Authorization': `Bearer ${TokenService.getAuthToken()}`,
+			}
+		})
+		.then((res) =>
+		!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+	);
 	},
 };
 
