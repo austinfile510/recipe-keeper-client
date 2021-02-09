@@ -1,4 +1,4 @@
 export default {
-	API_ENDPOINT: `https://git.heroku.com/stormy-castle-23160.git`,
+	API_ENDPOINT: `https://stormy-castle-23160.herokuapp.com/`,
 	TOKEN_KEY: 'recipe-keeper-auth-token',
 }
