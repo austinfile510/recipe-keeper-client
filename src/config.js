@@ -1,4 +1,4 @@
 export default {
-	API_ENDPOINT: process.env.REACT_APP_API_BASE_URL || `http://localhost:8000/api`,
+	API_ENDPOINT: `https://git.heroku.com/stormy-castle-23160.git`,
 	TOKEN_KEY: 'recipe-keeper-auth-token',
 }
