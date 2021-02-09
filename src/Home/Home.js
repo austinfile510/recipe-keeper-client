@@ -19,7 +19,7 @@ class Home extends React.Component {
 
 	renderRecipes() {
 		const { recipeList = [], searchTerm } = this.context;
-		return recipeList.filter(recipe => recipe.title == searchTerm || !searchTerm).map((recipe) => (
+		return recipeList.filter(recipe => recipe.title === searchTerm || !searchTerm).map((recipe) => (
 			<RecipesListItem key={recipe.id} recipe={recipe} />
 		));
 	}
@@ -52,9 +52,6 @@ class Home extends React.Component {
 					<SearchBar />
 					<ol>
 						<Section list className='MyRecipePage'>
-							{this.context.recipeList.length == 0 ? (
-								<p className='red'>Recipe not found, please try again.</p>
-							): null }
 							{error ? (
 								<p className='red'>There was an error, try again</p>
 							) : (
