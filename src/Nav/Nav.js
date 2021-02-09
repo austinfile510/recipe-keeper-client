@@ -25,7 +25,7 @@ export default class Nav extends React.Component {
 			</span>
 		);
 	}
-
+    
 	renderLoginLink() {
 		return (
 			<span className='Nav__not-logged-in'>
