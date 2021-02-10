@@ -2,6 +2,7 @@
 
 A Create-React-App by Austin File
 
+[App Screenshot](https://imgur.com/sdO3EZC)
 ## Live App: 
 https://recipe-keeper-client.vercel.app/
 
