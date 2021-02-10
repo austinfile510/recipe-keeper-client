@@ -30,8 +30,8 @@ class Home extends React.Component {
 			<div>
 				<Nav />
 				<main role='main'>
-					<h3>Welcome to Recipe Keeper!</h3>
-					<h4>All your recipes in one place.</h4>
+					<h2>Welcome to Recipe Keeper!</h2>
+					<h3>All your recipes in one place.</h3>
 
 					<p>
 						Browse recipes, save your favorites, and create your own recipes.

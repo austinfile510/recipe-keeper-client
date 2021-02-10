@@ -32,27 +32,29 @@ class Recipe extends React.Component {
 		const { recipe, user } = this.state;
 		return (
 			<div>
-				<Nav />
+				<header>
+					<Nav />
+				</header>
 				<main role='main'>
 					<h2>{recipe.title}</h2>
 
-					<h4>Recipe Description:</h4>
+					<h3>Recipe Description:</h3>
 
 					<p>{recipe.description}</p>
 
-					<h4>Ingredients:</h4>
+					<h3>Ingredients:</h3>
 
 					<p>{recipe.ingredients}</p>
 
-					<h4>Instructions:</h4>
+					<h3>Instructions:</h3>
 
 					<p>{recipe.instructions}</p>
 
-					<h4>Author:</h4>
-					<p>{recipe.author}</p>
-
-					<h4>Recipe Type:</h4>
+					<h3>Recipe Type:</h3>
 					<p>{recipe.meal_type}</p>
+
+					<h3>Author:</h3>
+					<p>{recipe.author}</p>
 
 					<h4>Date Modified:</h4>
 

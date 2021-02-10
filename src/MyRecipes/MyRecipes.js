@@ -11,6 +11,7 @@ class MyRecipes extends React.Component {
 
 	componentDidMount() {
 		this.context.clearError();
+		this.context.clearRecipeList();
 		RecipeApiService.getMyRecipes()
 			.then(this.context.setRecipeList)
 			.catch(this.context.setError);
@@ -28,7 +29,7 @@ class MyRecipes extends React.Component {
 		const { error } = this.context
 		return (
 			<div>
-				<Nav />
+			<header><Nav /></header>
 				<main role='main'>
 					<Section list className='MyRecipePage'>
 					{error ? (

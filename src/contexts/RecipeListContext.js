@@ -9,6 +9,7 @@ const RecipeListContext = React.createContext({
   setUser: () => {},
   setRecipe: () => {},
   setRecipeList: () => {},
+  clearRecipeList: () => {},
   deleteRecipe: () => {},
   setSearchTerm: () => {},
 })
@@ -45,6 +46,10 @@ export class RecipeListProvider extends Component {
     this.setState({ recipeList })
   }
 
+  clearRecipeList = recipeList => {
+    this.setState({ recipeList: []})
+  }
+
   setError = error => {
     console.error(error)
     this.setState({ error })
@@ -64,6 +69,7 @@ export class RecipeListProvider extends Component {
       setUser: this.setUser,
       setRecipe: this.setRecipe,
       setRecipeList: this.setRecipeList,
+      clearRecipeList: this.clearRecipeList,
       deleteRecipe: this.deleteRecipe,
       setSearchTerm: this.setSearchTerm,
     }

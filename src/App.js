@@ -38,9 +38,7 @@ class App extends React.Component {
 			<div className='App'>
 			<RecipeListProvider value={contextValue}>
 				<header className='App__header'>
-					<Link to={'/'}>
 						<h1>Recipe Keeper</h1>
-					</Link>
 				</header>
 				<main className='App__main'>
 					{this.state.hasError && (
