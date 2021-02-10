@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import RecipeListContext from '../contexts/RecipeListContext';
 import Nav from '../Nav/Nav';
 import AuthApiService from '../services/auth-api-service';
+import RecipeApiService from '../services/recipe-api-service';
+import TokenService from '../services/token-service';
 import '../styles.css';
 
 class Login extends React.Component {
-	state = {
-		error: null,
-	};
+	static contextType = RecipeListContext	
 
 	handleLogin = (e) => {
 		e.preventDefault();
@@ -17,6 +18,7 @@ class Login extends React.Component {
 		};
 		AuthApiService.postLogin(loginCredentials)
 			.then(() => {
+				this.context.setUser(TokenService.readJwtToken())
 				this.props.history.push('/my-recipes');
 			})
 			.catch((e) => {
@@ -31,26 +33,34 @@ class Login extends React.Component {
 				<main role='main'>
 					<header>
 						<Nav />
-						<h2>User Login</h2>
+						<h2 className='shadow'>User Login</h2>
 					</header>
 
-					<form onSubmit={this.handleLogin}>
+					<form
+						name='login-form'
+						className='shadow login-form__container'
+						onSubmit={this.handleLogin}
+					>
 						<label>
-							Username:
-							<input required type='text' name='user_name' />
+							Username: <input required type='text' name='user_name' />
 						</label>
 						<br />
 						<label>
-							Password:
-							<input required type='password' name='password' />
+							Password: <input required type='password' name='password' />
 							<br />
-							<input type='submit' value='Submit' />
+							<button>Submit</button>
 						</label>
 					</form>
-					<p className='red'>{this.state.error}</p>
-					<p>
-						New to Recipe Keeper? <Link to={'/register'}>Register</Link> for an
-						account today!
+					<p className='red'>{this.context.error}</p>
+					<p className='shadow'>
+						New to Recipe Keeper?{' '}
+						<Link
+							to={'/register'}
+							style={{ color: 'lightgreen', textDecorationLine: 'none' }}
+						>
+							Register
+						</Link>{' '}
+						for an account today!
 					</p>
 				</main>
 			</div>

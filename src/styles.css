@@ -13,7 +13,7 @@ h2 {
 	text-align: center;
 	display: flex;
 	justify-content: center;
-    font-size: 40px;
+	font-size: 40px;
 }
 
 h3 {
@@ -21,13 +21,20 @@ h3 {
 	text-align: center;
 	display: flex;
 	justify-content: center;
-    font-size: 35px;
+	font-size: 35px;
+}
+
+h4 {
+	font-family: 'Yellowtail', cursive;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	font-size: 25px;
 }
 
 /* Page Text */
 p,
 form,
-button,
 ol,
 ul {
 	font-family: 'Source Sans Pro', sans-serif;
@@ -38,23 +45,21 @@ ul {
 /* Shadow Component for 3d text */
 
 .shadow {
-	text-shadow: 2px 2px 0px black,
-                 3px 3px 0px black,
-                 4px 4px 0px black;   ;
-    color: white;
+	text-shadow: 2px 2px 0px black, 3px 3px 0px black, 4px 4px 0px black;
+	color: white;
 }
 
 /* Nav Header */
-nav, .Nav__logged-in {
+nav,
+.Nav__logged-in {
 	font-family: 'Yellowtail', cursive;
 	text-align: center;
 	font-size: 25px;
 	justify-content: center;
-    color:white;
+	color: white;
 }
 
 /* Containers and Background */
-
 
 body {
 	background-image: url(./images/cutting-board.jpg);
@@ -66,9 +71,9 @@ body {
 
 input,
 textarea,
-select,
-button {
+select {
 	font-family: 'Source Sans Pro', sans-serif;
+    width: 100%;
 }
 
 .search-results {
@@ -76,6 +81,22 @@ button {
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
+	padding-right: 40px;
+}
+
+.create-recipe__container {
+    margin: auto;
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+    width: 200px;
+}
+
+.RecipesListItem__container {
+	text-align: center;
+	display: block;
+	justify-content: center;
 }
 
 .HomePage__container {
@@ -88,9 +109,76 @@ button {
 	display: flex;
 	justify-content: center;
 	text-align: center;
-	font-family: 'Source Sans Pro', sans-serif;
 }
+
+.Recipe__container {
+	display: block;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	margin: auto;
+}
+
+/* Registration Form */
+
+.registration-form__container {
+	justify-content: center;
+	flex-direction: column;
+	display: flex;
+	max-width: 200px;
+	margin: auto;
+	font-size: 20px;
+}
+
+/* Login Form */
+
+.login-form__container {
+	justify-content: center;
+	flex-direction: column;
+	display: flex;
+	max-width: 250px;
+	margin: auto;
+	font-size: 20px;
+}
+
+/* Search Form */
+
+.search-form__container {
+	justify-content: center;
+	flex-direction: column;
+	display: flex;
+	max-width: 200px;
+	margin: auto;
+	font-size: 20px;
+}
+
+/* Text Area */
+
+
+
+/* Button */
+
+button {
+	justify-content: center;
+    float: center;
+    width: 125px;
+    height: 30px;
+	display: flex;
+	margin: auto;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+}
+
+/* App */
 
 .App {
 	flex: 1;
+	flex-direction: column;
+}
+
+/* Error Message Text - Red */
+
+.red {
+	color: red;
+	text-shadow: 2px 2px 2px black, 2px 3px 0px black;
 }

@@ -47,7 +47,7 @@ class Home extends React.Component {
 					</header>
 					<div name= 'splash-screen-intro' className='splash_message'>
 						<h2 className='shadow'>Welcome to Recipe Keeper!</h2>
-						<h2 style={{color: 'lightgreen'}} className='shadow'>All your recipes in one place.</h2>
+						<h2 style={{color: 'darkgreen'}} className='shadow'>All your recipes in one place.</h2>
 					</div>
 					<p className='shadow'>
 						Browse recipes and create your own! Share them with the public, or keep them secret - it's up to you!
@@ -55,18 +55,18 @@ class Home extends React.Component {
 
 					<p className='shadow'>
 						First time here?{' '}
-						<Link to={'/register'} style={{color: 'lightgreen', textDecorationLine: 'none'}} activeStyle={{color: 'grey'}}> Sign up for an account</Link> today and
+						<Link to={'/register'} style={{color: 'lightgreen', textDecorationLine: 'none'}}> Sign up for an account</Link> today and
 						start saving your favorite recipes!
 					</p>
 
 					{/* Display links to sortable Recipes table. Will default to show 25 newest public recipes*/}
-					<h3 style={{color: 'lightgreen'}} className='shadow'>Recipes</h3>
+					<h3 className='shadow'>Recipes</h3>
 					<p className='shadow'>
 						Have a look at some of the newest recipes submitted by our
 						community!
 					</p>
-					<div className='search-results'>
 						<SearchBar />
+						<div className='search-results'>
 						<ol>
 							<Section list className='MyRecipePage__results'>
 								{error ? (

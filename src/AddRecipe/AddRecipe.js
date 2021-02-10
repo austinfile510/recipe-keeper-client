@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
 import RecipeApiService from '../services/recipe-api-service';
-import '../styles.css'
+import '../styles.css';
 
 export default class AddRecipe extends React.Component {
 	constructor(props) {
@@ -55,36 +55,35 @@ export default class AddRecipe extends React.Component {
 				<main role='main'>
 					<header>
 						<Nav />
-						<h2>Create Recipe</h2>
+						<h2 className='shadow'>Create Recipe</h2>
 					</header>
-
+					<div className='shadow' name='recipe-container'>
 					<p>
 						Fill out the forms below with all the details for your new recipe.
 					</p>
-					<form name='recipe-fields' onSubmit={this.handleSubmit}>
+					<form name='recipe-fields' className='create-recipe__container' onSubmit={this.handleSubmit}>
 						<label>
-							Title:{' '}
+							Title:
+							</label>
 							<input
 								type='text'
 								name='title'
 								placeholder='What will you call your recipe?'
 							/>
-						</label>
-						<br />
+						
 						<label>
-							Description:{' '}
+							Description:
+							</label>
 							<textarea
 								type='text'
 								name='description'
 								placeholder='Give a brief summary of your dish.'
 							/>
-						</label>
-						<br />
+						
 						<label>
 							Ingredients:{' '}
 							<textarea name='ingredients' placeholder='Ingredients go here!' />
 						</label>
-						<br />
 						<label>
 							Instructions:{' '}
 							<textarea
@@ -92,9 +91,10 @@ export default class AddRecipe extends React.Component {
 								placeholder='Write your cooking instructions here!'
 							/>
 						</label>
-						<br />
+						
 						<label>
-							Meal Type:{' '}
+							Meal Type:
+							</label>
 							<select
 								name='meal_type'
 								defaultValue={this.state.meal_type}
@@ -113,21 +113,21 @@ export default class AddRecipe extends React.Component {
 								<option value='Appetizers'>Appetizers</option>
 								<option value='Holiday/Seasonal'>Holiday/Seasonal</option>
 							</select>
-						</label>
-						<br />
-
+						
 						<label>
 							Would you like to make this recipe private? Only you will be able
 							to see it and share it.
+							</label>
 							<input
 								type='checkbox'
 								name='is_private'
 								defaultValue={this.state.is_private}
 								onChange={this.handleChange}
 							/>
-						</label>
-						<input type='submit' value='Submit' />
+						
+						<button>Submit</button>
 					</form>
+					</div>
 				</main>
 			</div>
 		);

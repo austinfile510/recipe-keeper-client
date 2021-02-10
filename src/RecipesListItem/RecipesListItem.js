@@ -13,14 +13,20 @@ export default class RecipesListItem extends Component {
 					to={`/recipes/${recipe.id}`}
 					style={{ textDecorationLine: 'none' }}
 				>
-					<h4 style={{color: 'lightgreen'}} className='shadow'>{recipe.title}</h4>
+					<h4 style={{ color: 'lightgreen' }} className='shadow'>
+						{recipe.title}
+					</h4>
 				</Link>
-				<span className='shadow'>{recipe.meal_type}</span>
-				<Hyph />
-				<span className='shadow'>{recipe.author}</span>
+				<span className='shadow'>
+					<p>{recipe.meal_type}</p>
+				</span>
 				<Hyph />
 				<span className='shadow'>
-					{Moment(recipe.date_modified).format('MMMM Do, YYYY')}
+					<p>{recipe.author}</p>
+				</span>
+				<Hyph />
+				<span className='shadow'>
+					<p>{Moment(recipe.date_modified).format('MMMM Do, YYYY')}</p>
 				</span>
 			</div>
 		);

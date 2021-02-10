@@ -30,7 +30,7 @@ export default class MyRecipes extends React.Component {
 				<main role='main'>
 					<header>
 						<Nav />
-						<h2 >My Recipes</h2>
+						<h2 className='shadow'>My Recipes</h2>
 					</header>
 					<Section list className='MyRecipePage'>
 						{error ? (
