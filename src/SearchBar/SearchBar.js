@@ -1,6 +1,5 @@
 import React from 'react';
 import RecipeListContext from '../contexts/RecipeListContext';
-import { Hyph } from '../Utils/Utils';
 
 export default class SearchBar extends React.Component {
 	static contextType = RecipeListContext;

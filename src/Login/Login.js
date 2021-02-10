@@ -4,24 +4,26 @@ import Nav from '../Nav/Nav';
 import AuthApiService from '../services/auth-api-service';
 
 class Login extends React.Component {
-
-	handleLogin = e => {
+	handleLogin = (e) => {
 		e.preventDefault();
-			const loginCredentials = {
-				user_name: e.target['user_name'].value,
-				password: e.target['password'].value,
-			}
-		AuthApiService.postLogin(loginCredentials)
-		.then(() => {
-			this.props.history.push('/my-recipes')
-		})
-	}
+		const loginCredentials = {
+			user_name: e.target['user_name'].value,
+			password: e.target['password'].value,
+		};
+		AuthApiService.postLogin(loginCredentials).then(() => {
+			this.props.history.push('/my-recipes');
+		});
+	};
 
 	render() {
 		return (
 			<div>
-			<Nav />
 				<main role='main'>
+					<header>
+						<Nav />
+						<h2>User Login</h2>
+					</header>
+
 					<form onSubmit={this.handleLogin}>
 						<label>
 							Username:
@@ -36,7 +38,10 @@ class Login extends React.Component {
 						</label>
 					</form>
 
-                    <p>New to Recipe Keeper? <Link to={'/register'}>Register</Link> for an account today!</p>
+					<p>
+						New to Recipe Keeper? <Link to={'/register'}>Register</Link> for an
+						account today!
+					</p>
 				</main>
 			</div>
 		);

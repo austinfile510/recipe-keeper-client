@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Hyph } from '../Utils/Utils';
+import Moment from 'moment';
 
 export default class RecipesListItem extends Component {
 	render() {
@@ -14,7 +15,7 @@ export default class RecipesListItem extends Component {
 				<Hyph />
 				<span className='RecipesListItem__author'>{recipe.author}</span>
 				<Hyph />
-				<span className='RecipesListItem__date'>{recipe.date_modified}</span>
+				<span className='RecipesListItem__date'>{Moment(recipe.date_modified).format('MMMM Do, YYYY')}</span>
 			</div>
 		);
 	}

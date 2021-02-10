@@ -1,6 +1,8 @@
 import React from 'react';
 import RecipeApiService from '../services/recipe-api-service';
 import Nav from '../Nav/Nav';
+import TokenService from '../services/token-service';
+import Moment from 'moment';
 
 class Recipe extends React.Component {
 	state = {
@@ -11,16 +13,6 @@ class Recipe extends React.Component {
 		onDeleteRecipe: () => {},
 	};
 
-	handleClickDelete = (e) => {
-		console.log('button clicked!');
-		const { recipeId } = this.props.match.params;
-		RecipeApiService.deleteRecipe(recipeId).then(() => {
-			this.props.history.push('/my-recipes');
-		});
-	};
-
-	handleSearch;
-
 	componentDidMount() {
 		const { recipeId } = this.props.match.params;
 		RecipeApiService.getRecipe(recipeId).then((recipe) =>
@@ -28,14 +20,34 @@ class Recipe extends React.Component {
 		);
 	}
 
+	handleClickDelete = (e) => {
+		const { recipeId } = this.props.match.params;
+		RecipeApiService.deleteRecipe(recipeId).then(() => {
+			this.props.history.push('/my-recipes');
+		});
+	};
+
+	renderDeleteButton() {
+		const { recipeId } = this.props.match.params;
+		if (TokenService.hasAuthToken() === false) {
+			return;
+		} else
+			return (
+				<button onClick={() => this.handleClickDelete(recipeId)}>
+					Delete Recipe
+				</button>
+			);
+	}
+
 	render() {
-		const { recipe, user } = this.state;
+		const { recipe } = this.state;
 		return (
 			<div>
-				<header>
-					<Nav />
-				</header>
 				<main role='main'>
+					<header>
+						<Nav />
+					</header>
+
 					<h2>{recipe.title}</h2>
 
 					<h3>Recipe Description:</h3>
@@ -58,11 +70,9 @@ class Recipe extends React.Component {
 
 					<h4>Date Modified:</h4>
 
-					<p>{recipe.date_modified}</p>
+					<p>{Moment(recipe.date_modified).format('MMMM Do, YYYY')}</p>
 
-					<button onClick={() => this.handleClickDelete(user.id)}>
-						Delete Recipe
-					</button>
+					{this.renderDeleteButton()}
 				</main>
 			</div>
 		);

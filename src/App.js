@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './Home/Home';
 import Recipe from './Recipe/Recipe';
 import AddRecipe from './AddRecipe/AddRecipe';
@@ -32,7 +32,7 @@ class App extends React.Component {
 			setUser: this.setUser,
 			setRecipe: this.setRecipe,
 			setRecipeList: this.setRecipeList,
-			deleteRecipe: this.handleDeleteRecipe,
+			deleteRecipe: this.deleteRecipe,
 		  }
 		return (
 			<div className='App'>

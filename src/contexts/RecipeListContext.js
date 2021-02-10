@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 const RecipeListContext = React.createContext({
+  recipe: [],
   recipeList: [],
   error: null,
   searchTerm: '',

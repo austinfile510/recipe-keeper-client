@@ -4,24 +4,26 @@ import Nav from '../Nav/Nav';
 import AuthApiService from '../services/auth-api-service';
 
 class Register extends React.Component {
-	handleRegister = e => {
+	handleRegister = (e) => {
 		e.preventDefault();
-			const registerInfo = {
-				full_name: e.target['full_name'].value,
-				user_name: e.target['user_name'].value,
-				password: e.target['password'].value,
-				email: e.target['email'].value,
-			}
-		AuthApiService.postUser(registerInfo)
-		.then(() => {
-			this.props.history.push('/login')
-		})
-	}
+		const registerInfo = {
+			full_name: e.target['full_name'].value,
+			user_name: e.target['user_name'].value,
+			password: e.target['password'].value,
+			email: e.target['email'].value,
+		};
+		AuthApiService.postUser(registerInfo).then(() => {
+			this.props.history.push('/login');
+		});
+	};
 	render() {
 		return (
 			<div>
-				<Nav />
 				<main role='main'>
+					<header>
+						<Nav />
+						<h2>Registration</h2>
+					</header>
 					<form onSubmit={this.handleRegister}>
 						<label>
 							Full Name:
@@ -37,8 +39,8 @@ class Register extends React.Component {
 							Password:
 							<input type='text' name='password' />
 						</label>
-                        <br />
-                        <label>
+						<br />
+						<label>
 							Email Address:
 							<input type='text' name='email' />
 						</label>
@@ -46,7 +48,9 @@ class Register extends React.Component {
 						<input type='submit' value='Register' />
 					</form>
 
-                    <p>Already registered? <Link to={'/login'}>Log in here!</Link></p>
+					<p>
+						Already registered? <Link to={'/login'}>Log in here!</Link>
+					</p>
 				</main>
 			</div>
 		);

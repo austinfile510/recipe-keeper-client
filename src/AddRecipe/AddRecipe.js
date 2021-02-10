@@ -8,7 +8,7 @@ export default class AddRecipe extends React.Component {
 		this.state = {
 			meal_type: 'Breakfast',
 			is_private: false,
-			error: null
+			error: null,
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -40,7 +40,7 @@ export default class AddRecipe extends React.Component {
 			is_private: e.target['is_private'].value,
 		};
 		RecipeApiService.postRecipe(newRecipe)
-			.then(recipe => {
+			.then((recipe) => {
 				this.props.history.push(`/recipes/${recipe.id}`);
 			})
 			.catch((error) => {
@@ -50,9 +50,13 @@ export default class AddRecipe extends React.Component {
 
 	render() {
 		return (
-			<div name= 'AddRecipe'>
-			<Nav />
+			<div name='AddRecipe'>
 				<main role='main'>
+					<header>
+						<Nav />
+						<h2>Create Recipe</h2>
+					</header>
+
 					<p>
 						Fill out the forms below with all the details for your new recipe.
 					</p>
@@ -99,7 +103,9 @@ export default class AddRecipe extends React.Component {
 								<option value='Lunch'>Lunch</option>
 								<option value='Dinner'>Dinner</option>
 								<option value='Dessert'>Dessert</option>
-								<option value='Soups, Stews, and Chili'>Soups, Stews, and Chili</option>
+								<option value='Soups, Stews, and Chili'>
+									Soups, Stews, and Chili
+								</option>
 								<option value='Salad'>Salad</option>
 								<option value='Snack'>Snack</option>
 								<option value='Drink'>Drink</option>
