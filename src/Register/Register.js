@@ -41,7 +41,7 @@ class Register extends React.Component {
 						onSubmit={this.handleRegister}
 					>
 						<label>Full Name:</label>
-						<input name='full-name-input' required type='text' />
+						<input name='full_name' required type='text' />
 						<label>Username:</label>
 						<input required type='text' name='user_name' />
 
@@ -49,7 +49,7 @@ class Register extends React.Component {
 						<input required type='password' name='password' />
 
 						<label>Email Address:</label>
-						<input required type='email' name='email-register' />
+						<input required type='email' name='email' />
 
 						<button>Register</button>
 					</form>
@@ -59,6 +59,7 @@ class Register extends React.Component {
 						<Link
 							to={'/login'}
 							style={{ color: 'lightgreen', textDecorationLine: 'none' }}
+							activeStyle={{ color: 'darkgreen' }}
 						>
 							Log in here!
 						</Link>
