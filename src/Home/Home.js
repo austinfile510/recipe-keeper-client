@@ -5,7 +5,7 @@ import RecipeApiService from '../services/recipe-api-service';
 import RecipeListContext from '../contexts/RecipeListContext';
 import RecipesListItem from '../RecipesListItem/RecipesListItem';
 import { Section } from '../Utils/Utils';
-import SearchBar from '../SearchBar/SearchBar'
+import SearchBar from '../SearchBar/SearchBar';
 
 class Home extends React.Component {
 	static contextType = RecipeListContext;
@@ -17,9 +17,21 @@ class Home extends React.Component {
 			.catch(this.context.setError);
 	}
 
+	filterRecipes = (recipeList, searchTerm) => {
+		if (!searchTerm) {
+			return recipeList;
+		}
+
+		return recipeList.filter((recipe) => {
+			const recipeTitle = recipe.title.toLowerCase();
+			return recipeTitle.includes(searchTerm.toLowerCase());
+		});
+	};
+
 	renderRecipes() {
 		const { recipeList = [], searchTerm } = this.context;
-		return recipeList.filter(recipe => recipe.title === searchTerm || !searchTerm).map((recipe) => (
+		const filteredRecipes = this.filterRecipes(recipeList, searchTerm);
+		return filteredRecipes.map((recipe) => (
 			<RecipesListItem key={recipe.id} recipe={recipe} />
 		));
 	}

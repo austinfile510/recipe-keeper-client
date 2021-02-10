@@ -14,7 +14,7 @@ export default class SearchBar extends React.Component {
 			<div>
 				<form name='search-bar' onSubmit={this.handleSearch}>
 					<label htmlFor='search-bar'>Search for a recipe: </label>
-					<input required type='text' name='search-bar' id='search-bar' placeholder='Search for a recipe here...' />
+					<input type='text' name='search-bar' id='search-bar' placeholder='Search for a recipe here...' />
 					<button>Search</button>
 				</form>
 				;

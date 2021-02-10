@@ -10,7 +10,9 @@ export default class RecipesListItem extends Component {
 				<Link to={`/recipes/${recipe.id}`} className='RecipesListItem'>
 					<h4 className='RecipesListItem__heading'>{recipe.title}</h4>
 				</Link>
-				<span className='RecipesListItem__date'>{recipe.meal_type}</span>
+				<span className='RecipesListItem__meal_type'>{recipe.meal_type}</span>
+				<Hyph />
+				<span className='RecipesListItem__author'>{recipe.author}</span>
 				<Hyph />
 				<span className='RecipesListItem__date'>{recipe.date_modified}</span>
 			</div>
