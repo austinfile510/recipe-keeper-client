@@ -8,6 +8,7 @@ import Register from './Register/Register';
 import MyRecipes from './MyRecipes/MyRecipes';
 import NotFoundPage from './NotFoundPage/NotFoundPage'
 import { RecipeListProvider } from './contexts/RecipeListContext';
+import './styles.css';
 
 class App extends React.Component {
 	state = { hasError: false };
@@ -38,7 +39,7 @@ class App extends React.Component {
 			<div className='App'>
 			<RecipeListProvider value={contextValue}>
 				<header className='App__header'>
-						<h1>Recipe Keeper</h1>
+						<h1 className='shadow'>Recipe Keeper</h1>
 				</header>
 				<main className='App__main'>
 					{this.state.hasError && (

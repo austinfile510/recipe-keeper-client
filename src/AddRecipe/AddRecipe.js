@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
 import RecipeApiService from '../services/recipe-api-service';
+import '../styles.css'
 
 export default class AddRecipe extends React.Component {
 	constructor(props) {

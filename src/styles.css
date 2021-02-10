@@ -1,0 +1,96 @@
+/* Headers and Titles */
+
+h1 {
+	font-family: 'Yellowtail', cursive;
+	font-size: 80px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+h2 {
+	font-family: 'Yellowtail', cursive;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+    font-size: 40px;
+}
+
+h3 {
+	font-family: 'Yellowtail', cursive;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+    font-size: 35px;
+}
+
+/* Page Text */
+p,
+form,
+button,
+ol,
+ul {
+	font-family: 'Source Sans Pro', sans-serif;
+	text-align: center;
+	justify-content: center;
+}
+
+/* Shadow Component for 3d text */
+
+.shadow {
+	text-shadow: 2px 2px 0px black,
+                 3px 3px 0px black,
+                 4px 4px 0px black;   ;
+    color: white;
+}
+
+/* Nav Header */
+nav, .Nav__logged-in {
+	font-family: 'Yellowtail', cursive;
+	text-align: center;
+	font-size: 25px;
+	justify-content: center;
+    color:white;
+}
+
+/* Containers and Background */
+
+
+body {
+	background-image: url(./images/cutting-board.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+
+input,
+textarea,
+select,
+button {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.search-results {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.HomePage__container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+.MyRecipePage {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.App {
+	flex: 1;
+}

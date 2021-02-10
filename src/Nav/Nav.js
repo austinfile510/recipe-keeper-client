@@ -15,11 +15,11 @@ export default class Nav extends React.Component {
 	renderLogoutLink() {
 		return (
 			<span className='Nav__logged-in'>
-				<Link to={'/my-recipes'}>My Recipes</Link>
+				<Link to={'/my-recipes'} style={{color: 'lightgreen', textDecoration: 'none'}}>My Recipes</Link>
 				<Hyph />
-				<Link to={'/add-recipe'}>Create Recipe</Link>
+				<Link to={'/add-recipe'} style={{color: 'lightgreen', textDecoration: 'none'}}>Create Recipe</Link>
 				<Hyph />
-				<Link onClick={this.handleLogoutClick} to='/'>
+				<Link onClick={this.handleLogoutClick} to='/' style={{color: 'lightgreen', textDecoration: 'none'}}>
 					Logout
 				</Link>
 			</span>
@@ -29,17 +29,17 @@ export default class Nav extends React.Component {
 	renderLoginLink() {
 		return (
 			<span className='Nav__not-logged-in'>
-				<Link to='/register'>Register</Link>
+				<Link to='/register' style={{color: 'lightgreen', textDecoration: 'none'}}>Register</Link>
 				<Hyph />
-				<Link to='/login'>Log in</Link>
+				<Link to='/login' style={{color: 'lightgreen', textDecoration: 'none'}}>Log in</Link>
 			</span>
 		);
 	}
 	render() {
 		return (
 			<div name='nav'>
-				<nav className='Nav'>
-					<Link to={'/'}>Home</Link>
+				<nav className='nav shadow'>
+					<Link to={'/'} style={{color: 'lightgreen', textDecoration: 'none'}}>Home</Link>
 					<Hyph />
 					{TokenService.hasAuthToken()
 						? this.renderLogoutLink()

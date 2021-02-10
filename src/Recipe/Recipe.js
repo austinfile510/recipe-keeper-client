@@ -3,6 +3,7 @@ import RecipeApiService from '../services/recipe-api-service';
 import Nav from '../Nav/Nav';
 import TokenService from '../services/token-service';
 import Moment from 'moment';
+import '../styles.css';
 
 class Recipe extends React.Component {
 	state = {
@@ -28,12 +29,13 @@ class Recipe extends React.Component {
 	};
 
 	renderDeleteButton() {
+		// TO DO - Implement button so it only shows when the registered logged in user matches the recipe's user ID
 		const { recipeId } = this.props.match.params;
 		if (TokenService.hasAuthToken() === false) {
 			return;
 		} else
 			return (
-				<button onClick={() => this.handleClickDelete(recipeId)}>
+				<button className='delete-button' onClick={() => this.handleClickDelete(recipeId)}>
 					Delete Recipe
 				</button>
 			);
