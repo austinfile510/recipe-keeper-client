@@ -3,12 +3,17 @@ import RecipeApiService from '../services/recipe-api-service';
 import Nav from '../Nav/Nav';
 import TokenService from '../services/token-service';
 import Moment from 'moment';
+import '../styles.css';
+import RecipeListContext from '../contexts/RecipeListContext';
 
 class Recipe extends React.Component {
 	state = {
 		recipe: {},
 		user: {},
 	};
+
+	static contextType = RecipeListContext;
+
 	static defaultProps = {
 		onDeleteRecipe: () => {},
 	};
@@ -28,27 +33,29 @@ class Recipe extends React.Component {
 	};
 
 	renderDeleteButton() {
+		// TO DO - Implement button so it only shows when the registered logged in user matches the recipe's user ID
 		const { recipeId } = this.props.match.params;
-		if (TokenService.hasAuthToken() === false) {
+		if (this.context.user.user_id !== this.state.recipe.user_id) {
 			return;
 		} else
 			return (
-				<button onClick={() => this.handleClickDelete(recipeId)}>
+				<button className='delete-button' onClick={() => this.handleClickDelete(recipeId)}>
 					Delete Recipe
 				</button>
 			);
 	}
 
 	render() {
+		console.log(this.context);
 		const { recipe } = this.state;
 		return (
-			<div>
-				<main role='main'>
+			<div name='recipe-page'>
+				<main className='Recipe__container shadow' role='main'>
 					<header>
 						<Nav />
 					</header>
 
-					<h2>{recipe.title}</h2>
+					<h2 style={{color: 'darkgreen'}}>{recipe.title}</h2>
 
 					<h3>Recipe Description:</h3>
 

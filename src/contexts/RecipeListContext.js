@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TokenService from '../services/token-service';
 
 const RecipeListContext = React.createContext({
   recipe: [],
@@ -18,8 +19,8 @@ export default RecipeListContext
 
 export class RecipeListProvider extends Component {
   state = {
-    recipe: [],
-    user: [],
+    recipe: {},
+    user: TokenService.readJwtToken() || {},
     recipeList: [],
     error: null,
     searchTerm: ''
@@ -62,6 +63,7 @@ export class RecipeListProvider extends Component {
 
   render() {
     const value = {
+      user: this.state.user,
       recipeList: this.state.recipeList,
       error: this.state.error,
       searchTerm: this.state.searchTerm,

@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import MyRecipes from './MyRecipes.css';
+import Home from './Home';
 
-describe('MyRecipes component', () => {
+describe('Home component', () => {
 	it('renders without crashing', () => {
 		const div = document.createElement('div');
 		ReactDOM.render(
 			<BrowserRouter>
-				<MyRecipes />
+				<Home />
 			</BrowserRouter>,
 			div
 		);

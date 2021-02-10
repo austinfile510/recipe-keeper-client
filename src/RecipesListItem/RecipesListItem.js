@@ -2,20 +2,32 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Hyph } from '../Utils/Utils';
 import Moment from 'moment';
+import '../styles.css';
 
 export default class RecipesListItem extends Component {
 	render() {
 		const { recipe } = this.props;
 		return (
-			<div>
-				<Link to={`/recipes/${recipe.id}`} className='RecipesListItem'>
-					<h4 className='RecipesListItem__heading'>{recipe.title}</h4>
+			<div name='RecipesListItem' className='RecipesListItem__container'>
+				<Link
+					to={`/recipes/${recipe.id}`}
+					style={{ textDecorationLine: 'none' }}
+				>
+					<h4 style={{ color: 'lightgreen' }} className='shadow'>
+						{recipe.title}
+					</h4>
 				</Link>
-				<span className='RecipesListItem__meal_type'>{recipe.meal_type}</span>
+				<span className='shadow'>
+					<p>{recipe.meal_type}</p>
+				</span>
 				<Hyph />
-				<span className='RecipesListItem__author'>{recipe.author}</span>
+				<span className='shadow'>
+					<p>{recipe.author}</p>
+				</span>
 				<Hyph />
-				<span className='RecipesListItem__date'>{Moment(recipe.date_modified).format('MMMM Do, YYYY')}</span>
+				<span className='shadow'>
+					<p>{Moment(recipe.date_modified).format('MMMM Do, YYYY')}</p>
+				</span>
 			</div>
 		);
 	}
