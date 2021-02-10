@@ -6,7 +6,7 @@ export default class SearchBar extends React.Component {
 
 	handleSearch = (e) => {
 		e.preventDefault();
-		this.context.setSearchTerm(e.target.search.value);
+		this.context.setSearchTerm(e.target.['search-bar'].value);
 	};
 
 	render() {
