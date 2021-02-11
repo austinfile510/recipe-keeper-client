@@ -1,7 +1,6 @@
 import React from 'react';
 import RecipeApiService from '../services/recipe-api-service';
 import Nav from '../Nav/Nav';
-import TokenService from '../services/token-service';
 import Moment from 'moment';
 import '../styles.css';
 import RecipeListContext from '../contexts/RecipeListContext';

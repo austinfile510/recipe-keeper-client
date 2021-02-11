@@ -1,7 +1,9 @@
 import React from 'react';
+import RecipeListContext from '../contexts/RecipeListContext';
 import Nav from '../Nav/Nav';
 import RecipeApiService from '../services/recipe-api-service';
 import '../styles.css';
+
 
 export default class AddRecipe extends React.Component {
 	constructor(props) {
@@ -14,6 +16,8 @@ export default class AddRecipe extends React.Component {
 
 		this.handleChange = this.handleChange.bind(this);
 	}
+
+	static contextType = RecipeListContext;
 
 	static defaultProps = {
 		history: {
@@ -44,8 +48,9 @@ export default class AddRecipe extends React.Component {
 			.then((recipe) => {
 				this.props.history.push(`/recipes/${recipe.id}`);
 			})
-			.catch((error) => {
-				console.error({ error });
+			.catch((e) => {
+				console.error({ e });
+				this.setState({ error: e.error });
 			});
 	};
 
@@ -58,43 +63,44 @@ export default class AddRecipe extends React.Component {
 						<h2 className='shadow'>Create Recipe</h2>
 					</header>
 					<div className='shadow' name='recipe-container'>
-					<p>
-						Fill out the forms below with all the details for your new recipe.
-					</p>
-					<form name='recipe-fields' className='create-recipe__container' onSubmit={this.handleSubmit}>
-						<label>
-							Title:
-							</label>
+						<p>
+							Fill out the forms below with all the details for your new recipe.
+						</p>
+						<form
+							name='recipe-fields'
+							className='create-recipe__container'
+							onSubmit={this.handleSubmit}
+						>
+							<label>Title:</label>
 							<input
 								type='text'
 								name='title'
 								placeholder='What will you call your recipe?'
 							/>
-						
-						<label>
-							Description:
-							</label>
+
+							<label>Description:</label>
 							<textarea
 								type='text'
 								name='description'
 								placeholder='Give a brief summary of your dish.'
 							/>
-						
-						<label>
-							Ingredients:{' '}
-							<textarea name='ingredients' placeholder='Ingredients go here!' />
-						</label>
-						<label>
-							Instructions:{' '}
-							<textarea
-								name='instructions'
-								placeholder='Write your cooking instructions here!'
-							/>
-						</label>
-						
-						<label>
-							Meal Type:
+
+							<label>
+								Ingredients:{' '}
+								<textarea
+									name='ingredients'
+									placeholder='Ingredients go here!'
+								/>
 							</label>
+							<label>
+								Instructions:{' '}
+								<textarea
+									name='instructions'
+									placeholder='Write your cooking instructions here!'
+								/>
+							</label>
+
+							<label>Meal Type:</label>
 							<select
 								name='meal_type'
 								defaultValue={this.state.meal_type}
@@ -113,10 +119,10 @@ export default class AddRecipe extends React.Component {
 								<option value='Appetizers'>Appetizers</option>
 								<option value='Holiday/Seasonal'>Holiday/Seasonal</option>
 							</select>
-						
-						<label>
-							Would you like to make this recipe private? Only you will be able
-							to see it and share it.
+
+							<label>
+								Would you like to make this recipe private? Only you will be
+								able to see it and share it.
 							</label>
 							<input
 								type='checkbox'
@@ -124,9 +130,10 @@ export default class AddRecipe extends React.Component {
 								defaultValue={this.state.is_private}
 								onChange={this.handleChange}
 							/>
-						
-						<button>Submit</button>
-					</form>
+
+							<button>Submit</button>
+							<p className='red'>{this.state.error}</p>
+						</form>
 					</div>
 				</main>
 			</div>

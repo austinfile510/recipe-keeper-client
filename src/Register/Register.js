@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import AuthApiService from '../services/auth-api-service';
 import '../styles.css';
+import RecipeListContext from '../contexts/RecipeListContext';
+
 
 class Register extends React.Component {
+	static contextType = RecipeListContext;
+
 	state = {
 		error: null,
 	};

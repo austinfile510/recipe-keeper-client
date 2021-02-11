@@ -2,12 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import RecipeListContext from '../contexts/RecipeListContext';
 import Nav from '../Nav/Nav';
-import AuthApiService from '../services/auth-api-service'
+import AuthApiService from '../services/auth-api-service';
 import TokenService from '../services/token-service';
 import '../styles.css';
 
 class Login extends React.Component {
-	static contextType = RecipeListContext	
+	static contextType = RecipeListContext;
+
+	state = {
+		error: null,
+	};
 
 	handleLogin = (e) => {
 		e.preventDefault();
@@ -17,7 +21,7 @@ class Login extends React.Component {
 		};
 		AuthApiService.postLogin(loginCredentials)
 			.then(() => {
-				this.context.setUser(TokenService.readJwtToken())
+				this.context.setUser(TokenService.readJwtToken());
 				this.props.history.push('/my-recipes');
 			})
 			.catch((e) => {
@@ -50,7 +54,7 @@ class Login extends React.Component {
 							<button>Submit</button>
 						</label>
 					</form>
-					<p className='red'>{this.context.error}</p>
+					<p className='red'>{this.state.error}</p>
 					<p className='shadow'>
 						New to Recipe Keeper?{' '}
 						<Link
